@@ -36,13 +36,13 @@ app.use(methodOverride('_method')) ;
 // }) ;
 
 // show all chats
-app.get("/chats",async (req,res) => {
+app.get("https://whatsapp-messenger-y982.onrender.com/chats",async (req,res) => {
     let chats = await Chat.find() ;    // asynchonouse function
     res.render("index.ejs",{chats}) ;
 });
 
 // new route
-app.get("/chats/new" , (req,res) => {
+app.get("https://whatsapp-messenger-y982.onrender.com/chats/new" , (req,res) => {
     res.render("newChat.ejs") ;
 }) ;
 
@@ -61,14 +61,14 @@ app.post("/chats" , (req,res) => {
 })
 
 //edit route
-app.get("/chats/:id/edit", async(req,res) => {
+app.get("https://whatsapp-messenger-y982.onrender.com/chats/:id/edit", async(req,res) => {
     let {id} = req.params ;
     let chat = await Chat.findById(id) ;
     res.render("edit.ejs", {chat}) ;
 }) ;
 
 //update route
-app.put("/chats/:id", async(req,res)=> {
+app.put("https://whatsapp-messenger-y982.onrender.com/chats/:id", async(req,res)=> {
     let {id} = req.params ;
     let {msg: newMsg} = req.body ;
     let updateChat = await Chat.findByIdAndUpdate(id,{msg : newMsg},{runValidators:true , new:true}) ;
@@ -77,13 +77,13 @@ app.put("/chats/:id", async(req,res)=> {
 })
 
 // delete route
-app.delete("/chats/:id",async(req,res) => {
+app.delete("https://whatsapp-messenger-y982.onrender.com/chats/:id",async(req,res) => {
     let {id} = req.params ;
     let deletedChat = await Chat.findByIdAndDelete(id) ;
     res.redirect("/chats") ;
 })
 
-app.get("/", (req,res) => {
+app.get("https://whatsapp-messenger-y982.onrender.com/", (req,res) => {
     res.send("Go To The /chats to view all chats") ;
 })
 
